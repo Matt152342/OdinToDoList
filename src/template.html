@@ -9,16 +9,36 @@
     <body>
         <div class="main">
             <div class="header">
-                div
+                <button class="addTaskBtn" command="show-modal" commandfor="my-dialog">Add task</button>
             </div>
 
             <div class="taskList">
-                div
+                List
             </div>
 
             <div class="taskDisplay">
-                div
+                Display
             </div>
+
+            <dialog id="my-dialog">
+                <form action="get" class="taskForm">
+                    <div class="formTitle">
+                        <label for="taskTitle">Enter title: </label>
+                        <input type="text" name="taskTitle" id="taskTitle" required>
+                    </div>
+                    <div class="formDescription">
+                        <label for="taskDescription">Enter description: </label>
+                        <input type="text" name="taskDescription" id="taskDescription" required>
+                    </div>
+                    <div class="formDueDate">
+                        <label for="taskDueDate">Enter due date: </label>
+                        <input type="text" name="taskDueDate" id="taskDueDate" required>
+                    </div>
+                </form>
+
+                <button commandfor="my-dialog" command="close">Submit Task</button>
+                <button commandfor="my-dialog" command="close">Close</button>
+            </dialog>
         </div>
     </body>
 </html>

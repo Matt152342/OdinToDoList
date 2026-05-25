@@ -26,6 +26,14 @@ body {
     grid-template-rows: 1fr 5fr;
 }
 
+.header, .taskList, .taskDisplay {
+    margin: 2px;
+    padding: 20px;
+
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
 .header {
     grid-column: 1 / span 2;
 }
