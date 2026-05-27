@@ -10,8 +10,9 @@ taskForm.addEventListener('submit', (event) => {
     const taskTitle = document.getElementById('taskTitle').value;
     const taskDescription = document.getElementById('taskDescription').value;
     const taskDueDate = document.getElementById('taskDueDate').value;
+    const taskPriority = document.getElementById('taskPriority').value;
 
-    addTask(taskTitle, taskDescription, taskDueDate);
+    addTask(taskTitle, taskDescription, taskDueDate, priority);
     displayTask();
 
     dialogBox.close();
