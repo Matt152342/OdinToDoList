@@ -21,7 +21,7 @@
             </div>
 
             <dialog id="my-dialog">
-                <form action="get" class="taskForm">
+                <form action="post" class="taskForm">
                     <div class="formTitle">
                         <label for="taskTitle">Enter title: </label>
                         <input type="text" name="taskTitle" id="taskTitle" required>
@@ -32,11 +32,12 @@
                     </div>
                     <div class="formDueDate">
                         <label for="taskDueDate">Enter due date: </label>
-                        <input type="text" name="taskDueDate" id="taskDueDate" required>
+                        <input type="date" name="taskDueDate" id="taskDueDate" required>
                     </div>
+
+                    <button type="submit">Submit tasks</button>
                 </form>
 
-                <button commandfor="my-dialog" command="close">Submit Task</button>
                 <button commandfor="my-dialog" command="close">Close</button>
             </dialog>
         </div>
