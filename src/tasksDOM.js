@@ -8,17 +8,21 @@ const addTask = (title, description, dueDate, priority) => {
     taskList.push(task);
 }
 
-const displayTask = (divDisplay) => {
+const displayTasks = (divDisplay) => {
     divDisplay.innerHTML = "";
 
     taskList.forEach((task) => {
+        const taskGrid = document.createElement('div');
         const taskCard = document.createElement('div');
-        const taskTitle = document.createElement('h3');
+        const taskTitle = document.createElement('h2');
         //const taskDescription = document.createElement('p');
         const taskDueDate = document.createElement('p');
         const taskPriority = document.createElement('p');
 
+        taskGrid.classList.add('taskGrid');
         taskCard.classList.add('taskCard');
+        taskCard.setAttribute('id', task.taskID);
+
         taskTitle.classList.add('taskTitle');
         //taskDescription.classList.add('taskDescription');
         taskDueDate.classList.add('taskDueDate');
@@ -34,8 +38,33 @@ const displayTask = (divDisplay) => {
         taskCard.appendChild(taskDueDate);
         taskCard.appendChild(taskPriority);
 
-        divDisplay.appendChild(taskCard);
+        taskGrid.appendChild(taskCard);
+        divDisplay.appendChild(taskGrid);
     });
 }
 
-export { addTask, displayTask };
+const displayTask = (divDisplay, taskID) => {
+    divDisplay.innerHTML = "";
+
+    const targetTask = taskList.find((task) => {
+        return (task.taskID === taskID);
+    });
+
+    const taskTitle = document.createElement('h1');
+    const taskDescription = document.createElement('p');
+    const taskDueDate = document.createElement('p');
+
+    taskTitle.classList.add('taskTitle');
+    taskDescription.classList.add('taskDescription');
+    taskDueDate.classList.add('taskDueDate');
+
+    taskTitle.textContent = `${targetTask.title}`;
+    taskDescription.textContent = `${targetTask.description}`;
+    taskDueDate.textContent = `${targetTask.dueDate}`;
+
+    divDisplay.appendChild(taskTitle);
+    divDisplay.appendChild(taskDescription);
+    divDisplay.appendChild(taskDueDate);
+}
+
+export { addTask, displayTasks, displayTask };

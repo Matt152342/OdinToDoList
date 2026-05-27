@@ -1,7 +1,16 @@
 import "./styles.css";
-import { addTask, displayTask } from "./tasksDOM.js";
+import { addTask, displayTasks, displayTask } from "./tasksDOM.js";
 
 const taskDisplay = document.querySelector('.taskDisplay');
+
+taskDisplay.addEventListener('click', () => {
+    const taskCard = document.querySelectorAll('.taskCard');
+    taskCard.forEach((event) => {
+        const targetID = event.id;
+
+        displayTask(taskDisplay, targetID);
+    });
+})
 
 // Listen to dialog box for input
 const dialogBox = document.getElementById('my-dialog');
@@ -15,7 +24,7 @@ taskForm.addEventListener('submit', (event) => {
     const taskPriority = document.getElementById('taskPriority').value;
 
     addTask(taskTitle, taskDescription, taskDueDate, taskPriority);
-    displayTask(taskDisplay);
+    displayTasks(taskDisplay);
 
     dialogBox.close();
     taskForm.reset();

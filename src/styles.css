@@ -27,7 +27,7 @@ body {
 }
 
 .header, .taskList, .taskDisplay {
-    margin: 2px;
+    margin: 5px;
     padding: 20px;
 
     border: 1px solid black;
@@ -42,11 +42,11 @@ body {
 
 }
 
-.taskDisplay {
+.taskGrid {
     display: grid; 
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(auto-fit, 150px);
-    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit, 200px);
+    gap: 20px;
 }
 
 .taskCard {
@@ -64,5 +64,9 @@ body {
 
 .taskCard > * {
     margin: 0;
-    padding: 10px;
+    padding: 5px;
+}
+
+.taskCard:hover {
+    border: 2px solid blue;
 }
