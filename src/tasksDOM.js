@@ -1,10 +1,10 @@
-import { Task } from './task';
+import { Task } from './task.js';
 
 // Temp storage for tasks
-taskList = [];
+const taskList = [];
 
 const addTask = (title, description, dueDate) => {
-    task = new Task(title, description, dueDate);
+    let task = new Task(title, description, dueDate);
     taskList.push(task);
 }
 
