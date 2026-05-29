@@ -1,5 +1,5 @@
 import "./styles.css";
-import { addTask, displayTasks, displayTask } from "./tasksDOM.js";
+import { addTask, displayTasks, displayTask, deleteTask } from "./tasksDOM.js";
 
 const tasksDisplay = document.querySelector('.tasksDisplay');
 
@@ -10,17 +10,23 @@ homeBtn.addEventListener('click', () => {
 });
 
 // Listen for click to display target task
-tasksDisplay.addEventListener('click', () => {
-    const taskCard = document.querySelectorAll('.taskCard');
-    taskCard.forEach((event) => {
-        const targetID = event.id;
+tasksDisplay.addEventListener('click', (e) => {
+    const taskCard = e.target.closest('.taskCard');
+    if (taskCard) {
+        const taskCards = document.querySelectorAll('.taskCard');
+        taskCards.forEach((card) => {
+            const targetID = taskCard.id;
+            displayTask(tasksDisplay, targetID);
+        })
+    }
 
-        displayTask(tasksDisplay, targetID);
-    });
+    if (e.target.classList.contains('deleteBtn')) {
+        const taskDetails = document.querySelector('.taskDetails');
+        const taskID = taskDetails.id;
+
+        deleteTask(tasksDisplay, taskID);
+    }
 })
-
-// Listeen to btn to delete task
-
 
 // Listen to dialog box for input
 const dialogBox = document.getElementById('my-dialog');

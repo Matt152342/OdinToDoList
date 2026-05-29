@@ -56,22 +56,24 @@ const displayTask = (divDisplay, taskID) => {
     const addListItem = document.createElement('button');
 
     taskDetails.classList.add('taskDetails');
+    taskDetails.setAttribute('id', targetTask.taskID);
     buttons.classList.add('buttons');
+
     taskTitle.classList.add('taskTitle');
-    taskDescription.classList.add('taskDescription');
     taskDueDate.classList.add('taskDueDate');
+    taskDescription.classList.add('taskDescription');
     deleteTask.classList.add('deleteBtn');
     addListItem.classList.add('addListItemBtn');
 
     taskTitle.textContent = `${targetTask.title}`;
+    taskDueDate.textContent = `Due for: ${targetTask.dueDate}`;
     taskDescription.textContent = `${targetTask.description}`;
-    taskDueDate.textContent = `${targetTask.dueDate}`;
     deleteTask.textContent = 'Delete Task';
     addListItem.textContent = 'Add Checklist Item';
 
     taskDetails.appendChild(taskTitle);
-    taskDetails.appendChild(taskDescription);
     taskDetails.appendChild(taskDueDate);
+    taskDetails.appendChild(taskDescription);
 
     buttons.appendChild(deleteTask);
     buttons.appendChild(addListItem);
@@ -80,4 +82,17 @@ const displayTask = (divDisplay, taskID) => {
     divDisplay.appendChild(buttons);
 }
 
-export { addTask, displayTasks, displayTask };
+const deleteTask = (divDisplay, taskID) => {
+    // Delete task
+    const targetTask = taskList.find((task) => {
+        return (task.taskID === taskID);
+    });
+
+    const index = taskList.indexOf(targetTask);
+    taskList.splice(index, 1);
+
+    // Display dashboard
+    displayTasks(divDisplay);
+}
+
+export { addTask, displayTasks, displayTask, deleteTask };
