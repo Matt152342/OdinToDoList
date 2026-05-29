@@ -19,6 +19,9 @@ tasksDisplay.addEventListener('click', () => {
     });
 })
 
+// Listeen to btn to delete task
+
+
 // Listen to dialog box for input
 const dialogBox = document.getElementById('my-dialog');
 const taskForm = document.getElementById('taskForm');

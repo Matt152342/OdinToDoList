@@ -46,21 +46,38 @@ const displayTask = (divDisplay, taskID) => {
         return (task.taskID === taskID);
     });
 
+    const taskDetails = document.createElement('div');
+    const buttons = document.createElement('div');
+
     const taskTitle = document.createElement('h1');
     const taskDescription = document.createElement('p');
     const taskDueDate = document.createElement('p');
+    const deleteTask = document.createElement('button');
+    const addListItem = document.createElement('button');
 
+    taskDetails.classList.add('taskDetails');
+    buttons.classList.add('buttons');
     taskTitle.classList.add('taskTitle');
     taskDescription.classList.add('taskDescription');
     taskDueDate.classList.add('taskDueDate');
+    deleteTask.classList.add('deleteBtn');
+    addListItem.classList.add('addListItemBtn');
 
     taskTitle.textContent = `${targetTask.title}`;
     taskDescription.textContent = `${targetTask.description}`;
     taskDueDate.textContent = `${targetTask.dueDate}`;
+    deleteTask.textContent = 'Delete Task';
+    addListItem.textContent = 'Add Checklist Item';
 
-    divDisplay.appendChild(taskTitle);
-    divDisplay.appendChild(taskDescription);
-    divDisplay.appendChild(taskDueDate);
+    taskDetails.appendChild(taskTitle);
+    taskDetails.appendChild(taskDescription);
+    taskDetails.appendChild(taskDueDate);
+
+    buttons.appendChild(deleteTask);
+    buttons.appendChild(addListItem);
+
+    divDisplay.appendChild(taskDetails);
+    divDisplay.appendChild(buttons);
 }
 
 export { addTask, displayTasks, displayTask };
