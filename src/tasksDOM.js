@@ -4,6 +4,7 @@ import { format } from "date-fns";
 // Temp storage for tasks
 const taskList = [];
 const recentTasks = [];
+
 const addTask = (title, description, dueDate, priority) => {
     let task = new Task(title, description, format(new Date(dueDate), "do MMM yyyy"), priority);
     taskList.push(task);
@@ -30,7 +31,7 @@ const displayTasks = (divDisplay) => {
         taskPriority.classList.add('taskPriority');
 
         taskTitle.textContent = `${task.title}`;
-        taskDueDate.textContent = `Due: ${task.dueDate}`;
+        taskDueDate.textContent = `Due ${task.dueDate}`;
         taskPriority.textContent = `Priority: ${task.priority}`;
 
         taskCard.appendChild(taskTitle);
@@ -69,7 +70,7 @@ const displayTask = (divDisplay, taskID) => {
     addListItem.classList.add('addListItemBtn');
 
     taskTitle.textContent = `${targetTask.title}`;
-    taskDueDate.textContent = `Due for: ${targetTask.dueDate}`;
+    taskDueDate.textContent = `Due ${targetTask.dueDate}`;
     taskDescription.textContent = `${targetTask.description}`;
     deleteTask.textContent = 'Delete Task';
     addListItem.textContent = 'Add Checklist Item';
@@ -85,23 +86,35 @@ const displayTask = (divDisplay, taskID) => {
     divDisplay.appendChild(buttons);
 }
 
-const deleteTask = (divDisplay, taskID) => {
+const deleteTask = (divDisplay, divRecent, taskID) => {
     // Delete task
     const targetTask = taskList.find((task) => {
         return (task.taskID === taskID);
     });
+    const targetRecent = recentTasks.find((task) => {
+        return (task.taskID === taskID);
+    })
 
-    const index = taskList.indexOf(targetTask);
-    taskList.splice(index, 1);
+    const indexTask = taskList.indexOf(targetTask);
+    taskList.splice(indexTask, 1);
+    const indexRecent = recentTasks.indexOf(targetRecent);
+    recentTasks.splice(indexRecent, 1);
 
     // Display dashboard
     displayTasks(divDisplay);
+    showRecentTasks(divRecent);
 }
 
-const showRecentTasks = (divDisplay) => {
-    divDisplay.innerHTML("");
+const showRecentTasks = (listDisplay) => {
+    listDisplay.innerHTML = "";
 
+    recentTasks.forEach((task) => {
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('recentTask');
+        taskItem.textContent = `${task.title}`;
 
+        listDisplay.appendChild(taskItem);
+    });
 }
 
-export { addTask, displayTasks, displayTask, deleteTask };
+export { addTask, displayTasks, displayTask, deleteTask, showRecentTasks };

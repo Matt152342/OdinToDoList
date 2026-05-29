@@ -1,12 +1,14 @@
 import "./styles.css";
-import { addTask, displayTasks, displayTask, deleteTask } from "./tasksDOM.js";
+import { addTask, displayTasks, displayTask, deleteTask, showRecentTasks } from "./tasksDOM.js";
 
 const tasksDisplay = document.querySelector('.tasksDisplay');
+const taskList = document.querySelector('.recents');
 
 // List for user to display all tasks
 const homeBtn = document.querySelector('.homeBtn');
 homeBtn.addEventListener('click', () => {
     displayTasks(tasksDisplay);
+    showRecentTasks(taskList);
 });
 
 // Listen for click to display target task
@@ -16,6 +18,7 @@ tasksDisplay.addEventListener('click', (e) => {
         const taskCards = document.querySelectorAll('.taskCard');
         taskCards.forEach((card) => {
             const targetID = taskCard.id;
+
             displayTask(tasksDisplay, targetID);
         })
     }
@@ -24,7 +27,7 @@ tasksDisplay.addEventListener('click', (e) => {
         const taskDetails = document.querySelector('.taskDetails');
         const taskID = taskDetails.id;
 
-        deleteTask(tasksDisplay, taskID);
+        deleteTask(tasksDisplay, taskList, taskID);
     }
 })
 
@@ -41,6 +44,7 @@ taskForm.addEventListener('submit', (event) => {
 
     addTask(taskTitle, taskDescription, taskDueDate, taskPriority);
     displayTasks(tasksDisplay);
+    showRecentTasks(taskList);
 
     dialogBox.close();
     taskForm.reset();
