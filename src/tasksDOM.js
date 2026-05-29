@@ -1,10 +1,13 @@
 import { Task } from './task.js';
+import { format } from "date-fns";
 
 // Temp storage for tasks
 const taskList = [];
+const recentTasks = [];
 const addTask = (title, description, dueDate, priority) => {
-    let task = new Task(title, description, dueDate, priority);
+    let task = new Task(title, description, format(new Date(dueDate), "do MMM yyyy"), priority);
     taskList.push(task);
+    recentTasks.push(task);
 }
 
 const displayTasks = (divDisplay) => {
@@ -93,6 +96,12 @@ const deleteTask = (divDisplay, taskID) => {
 
     // Display dashboard
     displayTasks(divDisplay);
+}
+
+const showRecentTasks = (divDisplay) => {
+    divDisplay.innerHTML("");
+
+
 }
 
 export { addTask, displayTasks, displayTask, deleteTask };

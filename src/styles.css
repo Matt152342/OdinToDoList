@@ -80,12 +80,14 @@ body {
 }
 
 .buttons {
+    width: 90%;
+
     padding: 10px;
 
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     align-items: center;
     gap: 20px;
 }

@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Matt152342/OdinToDoList#readme",
   "devDependencies": {
     "css-loader": "^7.1.4",
+    "date-fns": "^4.3.0",
     "html-webpack-plugin": "^5.6.7",
     "style-loader": "^4.0.0",
     "webpack": "^5.107.1",
