@@ -26,7 +26,7 @@ body {
     grid-template-rows: 1fr 5fr;
 }
 
-.header, .taskList, .taskDisplay {
+.header, .taskList, .tasksDisplay {
     margin: 5px;
     padding: 20px;
 
@@ -42,11 +42,19 @@ body {
 
 }
 
-.taskGrid {
+.tasksDisplay {
     display: grid; 
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(auto-fit, 200px);
     gap: 20px;
+}
+
+.tasksDisplay.singleTask {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
 }
 
 .taskCard {
