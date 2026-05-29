@@ -3,6 +3,13 @@ import { addTask, displayTasks, displayTask } from "./tasksDOM.js";
 
 const tasksDisplay = document.querySelector('.tasksDisplay');
 
+// List for user to display all tasks
+const homeBtn = document.querySelector('.homeBtn');
+homeBtn.addEventListener('click', () => {
+    displayTasks(tasksDisplay);
+});
+
+// Listen for click to display target task
 tasksDisplay.addEventListener('click', () => {
     const taskCard = document.querySelectorAll('.taskCard');
     taskCard.forEach((event) => {
