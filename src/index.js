@@ -68,6 +68,7 @@ checklistForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const taskDetails = document.querySelector('.taskDetails');
+
     const taskID = taskDetails.id;
     const targetTask = findTask(taskID);
     

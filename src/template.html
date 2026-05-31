@@ -10,11 +10,12 @@
         <div class="main">
             <div class="header">
                 <button class="homeBtn">Home</button>
+                <h1>TODO List</h1>
                 <button class="addTaskBtn" command="show-modal" commandfor="my-dialog">Add task</button>
             </div>
 
             <div class="taskList">
-                <p>Recent</p>
+                <h2>Recent</h2>
                 <div class="recents"></div>
             </div>
 
@@ -44,7 +45,7 @@
                     <button type="submit">Submit tasks</button>
                 </form>
 
-                <button commandfor="my-dialog" command="close">Close</button>
+                <button class="closeDialog" commandfor="my-dialog" command="close">Close</button>
             </dialog>
 
             <dialog id="checklist-dialog">
@@ -56,6 +57,8 @@
 
                     <button type="submit">Submit</button>
                 </form>
+
+                <button class="closeDialog" commandfor="checklist-dialog" command="close">Close</button>
             </dialog>
         </div>
     </body>
