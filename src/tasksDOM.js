@@ -77,16 +77,37 @@ const displayChecklist = (divDisplay, task) => {
     const checkDisplay = document.createElement('div');
     const checkList = document.createElement('ol');
 
+    checkDisplay.classList.add('checklist');
+
     task.checklist.forEach((itemText) => {
         const checkItem = document.createElement('li');
+        const removeBtn = document.createElement('button');
+
         checkItem.classList.add('checkItem');
+        removeBtn.classList.add('removeCheckItem');
+
         checkItem.textContent = itemText;
+        removeBtn.textContent = "Remove";
 
         checkList.appendChild(checkItem);
+        checkList.appendChild(removeBtn);
     });
 
     checkDisplay.appendChild(checkList);
     divDisplay.appendChild(checkDisplay);
+}
+
+const removeChecklistItem = (taskID, itemIndex, divDisplay) => {
+    const targetTask = taskList.find((task) =>{
+        task.taskID === taskID
+    });
+
+    if (targetTask && targetTask.checklist) {
+        targetTask.checklist.splice(itemIndex, 1);
+
+        saveTaskList();
+        displayTask(divDisplay, taskID);
+    }
 }
 
 const displayTask = (divDisplay, taskID) => {
@@ -169,4 +190,4 @@ const showRecentTasks = (listDisplay) => {
     });
 }
 
-export { findTask, saveTaskList, addTask, displayTasks, displayTask, deleteTask, showRecentTasks };
+export { findTask, saveTaskList, removeChecklistItem, addTask, displayTasks, displayTask, deleteTask, showRecentTasks };

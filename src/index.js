@@ -1,6 +1,6 @@
 import "./styles.css";
 import { Task } from "./task.js";
-import { findTask, saveTaskList, addTask, displayTasks, displayTask, deleteTask, showRecentTasks } from "./tasksDOM.js";
+import { findTask, saveTaskList, removeChecklistItem, addTask, displayTasks, displayTask, deleteTask, showRecentTasks } from "./tasksDOM.js";
 
 const tasksDisplay = document.querySelector('.tasksDisplay');
 const taskList = document.querySelector('.recents');
