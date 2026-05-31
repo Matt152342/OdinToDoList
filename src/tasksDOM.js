@@ -7,8 +7,8 @@ const recentTasks = [];
 
 const findTask = (id) => {
     const targetTask = taskList.find((task) => {
-        return task.id = id;
-    })
+        return task.taskID === id;
+    });
 
     return targetTask;
 }
@@ -79,12 +79,14 @@ const displayChecklist = (divDisplay, task) => {
 
     checkDisplay.classList.add('checklist');
 
-    task.checklist.forEach((itemText) => {
+    task.checklist.forEach((itemText, index) => {
         const checkItem = document.createElement('li');
         const removeBtn = document.createElement('button');
 
         checkItem.classList.add('checkItem');
         removeBtn.classList.add('removeCheckItem');
+
+        removeBtn.setAttribute('data-index', index);
 
         checkItem.textContent = itemText;
         removeBtn.textContent = "Remove";
@@ -99,7 +101,7 @@ const displayChecklist = (divDisplay, task) => {
 
 const removeChecklistItem = (taskID, itemIndex, divDisplay) => {
     const targetTask = taskList.find((task) =>{
-        task.taskID === taskID
+        return task.taskID === taskID
     });
 
     if (targetTask && targetTask.checklist) {

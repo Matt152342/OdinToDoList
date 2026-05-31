@@ -32,6 +32,15 @@ tasksDisplay.addEventListener('click', (e) => {
 
         deleteTask(tasksDisplay, taskList, taskID);
     }
+
+    if (e.target.classList.contains('removeCheckItem')) {
+        const taskDetails = document.querySelector('.taskDetails');
+        const taskID = taskDetails.id;
+
+        const itemIndex = parseInt(e.target.getAttribute('data-index'), 10);
+
+        removeChecklistItem(taskID, itemIndex, tasksDisplay);
+    }
 })
 
 // Listen to dialog box for input
