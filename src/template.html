@@ -19,7 +19,7 @@
             </div>
 
             <div class="tasksDisplay">
-                
+
             </div>
 
             <dialog id="my-dialog">
@@ -45,6 +45,17 @@
                 </form>
 
                 <button commandfor="my-dialog" command="close">Close</button>
+            </dialog>
+
+            <dialog id="checklist-dialog">
+                <form action="get" id="checklistForm">
+                    <div class="formText">
+                        <label for="checklistText">Enter text: </label>
+                        <input type="text" name="checklistText" id="checklistText" required>
+                    </div>
+
+                    <button type="submit">Submit</button>
+                </form>
             </dialog>
         </div>
     </body>

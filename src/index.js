@@ -1,5 +1,6 @@
 import "./styles.css";
-import { addTask, displayTasks, displayTask, deleteTask, showRecentTasks } from "./tasksDOM.js";
+import { Task } from "./task.js";
+import { findTask, saveTaskList, addTask, displayTasks, displayTask, deleteTask, showRecentTasks } from "./tasksDOM.js";
 
 const tasksDisplay = document.querySelector('.tasksDisplay');
 const taskList = document.querySelector('.recents');
@@ -51,3 +52,23 @@ taskForm.addEventListener('submit', (event) => {
     dialogBox.close();
     taskForm.reset();
 });
+
+const checkDialogbox = document.getElementById('checklist-dialog');
+const checklistForm = document.getElementById('checklistForm');
+checklistForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const taskDetails = document.querySelector('.taskDetails');
+    const taskID = taskDetails.id;
+    const targetTask = findTask(taskID);
+    
+    const checklistText = document.getElementById('checklistText').value;
+    targetTask.checklist.push(checklistText);
+
+    saveTaskList();
+
+    displayTask(tasksDisplay, taskID);
+
+    checkDialogbox.close();
+    checklistForm.reset();
+})

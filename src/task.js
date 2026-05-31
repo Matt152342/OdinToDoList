@@ -5,6 +5,11 @@ class Task {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.checklist = [];
+    }
+
+    addCheckItem = (text) => {
+        this.checklist.push(text);
     }
 }
 

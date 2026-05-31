@@ -5,6 +5,14 @@ import { format } from "date-fns";
 let taskList = [];
 const recentTasks = [];
 
+const findTask = (id) => {
+    const targetTask = taskList.find((task) => {
+        return task.id = id;
+    })
+
+    return targetTask;
+}
+
 // Locally storing and getting the list of tasks in taskList
 const storedTasks = localStorage.getItem('userTaskList');
 if (storedTasks) {
@@ -13,6 +21,9 @@ if (storedTasks) {
     taskList = receivedTasks.map((task) => {
         const newTask = new Task(task.title, task.description, task.dueDate, task.priority);
         newTask.taskID = task.taskID;
+
+        newTask.checklist = task.checklist || [];
+
         return newTask;
     });
 }
@@ -60,6 +71,24 @@ const displayTasks = (divDisplay) => {
     });
 }
 
+const displayChecklist = (divDisplay, task) => {
+    const placeholder = new Task("", "", "", "");
+    
+    const checkDisplay = document.createElement('div');
+    const checkList = document.createElement('ol');
+
+    task.checklist.forEach((itemText) => {
+        const checkItem = document.createElement('li');
+        checkItem.classList.add('checkItem');
+        checkItem.textContent = itemText;
+
+        checkList.appendChild(checkItem);
+    });
+
+    checkDisplay.appendChild(checkList);
+    divDisplay.appendChild(checkDisplay);
+}
+
 const displayTask = (divDisplay, taskID) => {
     divDisplay.innerHTML = "";
     divDisplay.classList.add('singleTask');
@@ -86,6 +115,8 @@ const displayTask = (divDisplay, taskID) => {
     taskDescription.classList.add('taskDescription');
     deleteTask.classList.add('deleteBtn');
     addListItem.classList.add('addListItemBtn');
+    addListItem.setAttribute('command', 'show-modal');
+    addListItem.setAttribute('commandfor', 'checklist-dialog');
 
     taskTitle.textContent = `${targetTask.title}`;
     taskDueDate.textContent = `Due ${targetTask.dueDate}`;
@@ -96,6 +127,7 @@ const displayTask = (divDisplay, taskID) => {
     taskDetails.appendChild(taskTitle);
     taskDetails.appendChild(taskDueDate);
     taskDetails.appendChild(taskDescription);
+    displayChecklist(taskDetails, targetTask);
 
     buttons.appendChild(deleteTask);
     buttons.appendChild(addListItem);
@@ -137,4 +169,4 @@ const showRecentTasks = (listDisplay) => {
     });
 }
 
-export { addTask, displayTasks, displayTask, deleteTask, showRecentTasks };
+export { findTask, saveTaskList, addTask, displayTasks, displayTask, deleteTask, showRecentTasks };
