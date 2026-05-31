@@ -33,6 +33,7 @@ button {
 }
 
 button:hover {
+    cursor: pointer;
     color: var(--accent);
     background-color: var(--text);
     border-color: var(--subBack);
@@ -155,11 +156,42 @@ button:hover {
 }
 
 .taskCard:hover {
+    cursor: pointer;
     background-color: var(--text);
     border-color: var(--subBack);
 }
 .taskCard:hover > * {
+    cursor: pointer;
     color: var(--accent);
+}
+
+.checkList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkList > button {
+    padding: 5px 10px;
+}
+
+.checkItem.done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.checkItem:hover {
+    cursor: pointer;
+}
+
+.checkItemContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .taskList {

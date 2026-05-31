@@ -41,6 +41,10 @@ tasksDisplay.addEventListener('click', (e) => {
 
         removeChecklistItem(taskID, itemIndex, tasksDisplay);
     }
+
+    if (e.target.classList.contains('checkItem')) {
+        e.target.classList.toggle('done');
+    }
 })
 
 // Listen to dialog box for input

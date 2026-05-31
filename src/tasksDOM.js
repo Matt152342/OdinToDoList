@@ -77,12 +77,15 @@ const displayChecklist = (divDisplay, task) => {
     const checkDisplay = document.createElement('div');
     const checkList = document.createElement('ol');
 
+    checkList.classList.add('checkList');
     checkDisplay.classList.add('checklist');
 
     task.checklist.forEach((itemText, index) => {
+        const checkItemContainer = document.createElement('div');
         const checkItem = document.createElement('li');
         const removeBtn = document.createElement('button');
 
+        checkItemContainer.classList.add('checkItemContainer');
         checkItem.classList.add('checkItem');
         removeBtn.classList.add('removeCheckItem');
 
@@ -91,8 +94,9 @@ const displayChecklist = (divDisplay, task) => {
         checkItem.textContent = itemText;
         removeBtn.textContent = "Remove";
 
-        checkList.appendChild(checkItem);
-        checkList.appendChild(removeBtn);
+        checkItemContainer.appendChild(checkItem);
+        checkItemContainer.appendChild(removeBtn);
+        checkList.appendChild(checkItemContainer);
     });
 
     checkDisplay.appendChild(checkList);
