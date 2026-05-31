@@ -2,13 +2,31 @@ import { Task } from './task.js';
 import { format } from "date-fns";
 
 // Temp storage for tasks
-const taskList = [];
+let taskList = [];
 const recentTasks = [];
+
+// Locally storing and getting the list of tasks in taskList
+const storedTasks = localStorage.getItem('userTaskList');
+if (storedTasks) {
+    const receivedTasks = JSON.parse(storedTasks);
+
+    taskList = receivedTasks.map((task) => {
+        const newTask = new Task(task.title, task.description, task.dueDate, task.priority);
+        newTask.taskID = task.taskID;
+        return newTask;
+    });
+}
+
+const saveTaskList = () => {
+    localStorage.setItem('userTaskList', JSON.stringify(taskList));
+}
 
 const addTask = (title, description, dueDate, priority) => {
     let task = new Task(title, description, format(new Date(dueDate), "do MMM yyyy"), priority);
     taskList.push(task);
     recentTasks.push(task);
+
+    saveTaskList();
 }
 
 const displayTasks = (divDisplay) => {
@@ -99,6 +117,8 @@ const deleteTask = (divDisplay, divRecent, taskID) => {
     taskList.splice(indexTask, 1);
     const indexRecent = recentTasks.indexOf(targetRecent);
     recentTasks.splice(indexRecent, 1);
+
+    saveTaskList();
 
     // Display dashboard
     displayTasks(divDisplay);

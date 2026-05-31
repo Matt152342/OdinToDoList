@@ -4,6 +4,8 @@ import { addTask, displayTasks, displayTask, deleteTask, showRecentTasks } from 
 const tasksDisplay = document.querySelector('.tasksDisplay');
 const taskList = document.querySelector('.recents');
 
+displayTasks(tasksDisplay);
+
 // List for user to display all tasks
 const homeBtn = document.querySelector('.homeBtn');
 homeBtn.addEventListener('click', () => {

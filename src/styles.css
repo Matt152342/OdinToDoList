@@ -115,8 +115,24 @@ body {
 }
 
 .recents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.recents > * {
+    width: 100%;
+
     padding: 5px;
 
     border: 1px solid black;
     border-radius: 12px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
