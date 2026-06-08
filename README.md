@@ -1,6 +1,8 @@
 # TODO List Web App
 A clean and functional task management dashboard that allows users to create, view, organize, and track tasks alongside specialized sub-task checklists.
 
+# Live Preview: https://matt152342.github.io/OdinToDoList/
+
 ## Features
 Task Management: Create tasks with titles, descriptions, formatted due dates, and priority levels (1-3).
 
